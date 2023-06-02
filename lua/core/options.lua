@@ -16,3 +16,6 @@ end
 -- Set other options
 local colorscheme = require("helpers.colorscheme")
 vim.cmd.colorscheme(colorscheme)
+vim.api.nvim_create_autocmd("VimEnter", {
+	command = "set nornu nonu | set number | set relativenumber",
+})
