@@ -12,6 +12,7 @@ return {
 				require("nvterm.terminal").toggle "horizontal"
 			end
 			)
+			map("t", "jk", "<C-\\><C-n>", "Exit Terminal mode")
 		end,
 	},
 }

@@ -23,8 +23,6 @@ map('n', 'gx', vim.diagnostic.open_float, "Show diagnostics under cursor")
 map("n", "<M-h>", "^", "Go to beginning of line")
 map("n", "<M-l>", "$", "Go to end of line")
 
-map("n", "i", "a", "Insert (but append)")
-
 -- Better window navigation
 map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
 map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
