@@ -1,6 +1,7 @@
 local opts = {
   shiftwidth = 2,
   tabstop = 2,
+  softtabstop = 2,
   expandtab = true,
   wrap = false,
   termguicolors = true,
@@ -8,6 +9,8 @@ local opts = {
   relativenumber = true,
   smartindent = true,
   autoindent = true,
+  scrolloff = 20,
+  signcolumn = 'yes',
 }
 
 for opt, val in pairs(opts) do
