@@ -1,4 +1,10 @@
 -- Autocompletion
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
+
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -15,37 +21,10 @@ return {
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       local lspkind = require('lspkind')
+      local types = require("cmp.types")
+      local str = require("cmp.utils.str")
 
       require("luasnip/loaders/from_vscode").lazy_load()
-
-      local kind_icons = {
-        Text = "",
-        Method = "m",
-        Function = "",
-        Constructor = "",
-        Field = "",
-        Variable = "",
-        Class = "",
-        Interface = "",
-        Module = "",
-        Property = "",
-        Unit = "",
-        Value = "",
-        Enum = "",
-        Keyword = "",
-        Snippet = "",
-        Color = "",
-        File = "",
-        Reference = "",
-        Folder = "",
-        EnumMember = "",
-        Constant = "",
-        Struct = "",
-        Event = "",
-        Operator = "",
-        TypeParameter = "",
-      }
-
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -57,19 +36,28 @@ return {
           ["<C-j>"] = cmp.mapping.select_next_item(),
           ["<C-d>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-.>"] = cmp.mapping.complete(),
+
           ["<CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = false,
           }),
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
+          -- ["<Tab>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_next_item()
+          --   elseif luasnip.expand_or_jumpable() then
+          --     luasnip.expand_or_jump()
+          --   else
+          --     fallback()
+          --   end
+          -- end, { "i", "s" }),
+          ["<Tab>"] = vim.schedule_wrap(function(fallback)
+            if cmp.visible() and has_words_before() then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
             else
               fallback()
             end
-          end, { "i", "s" }),
+          end),
           ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
@@ -81,49 +69,37 @@ return {
           end, { "i", "s" }),
         }),
         formatting = {
-          fields = { "kind", "abbr", "menu" },
-          -- format = function(entry, vim_item)
-          --   -- Kind icons
-          --   vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-          --   vim_item.menu = ({
-          --     nvim_lsp = "[LSP]",
-          --     luasnip = "[Snippet]",
-          --     buffer = "[Buffer]",
-          --     path = "[Path]",
-          --   })[entry.source.name]
-          --   return vim_item
-          -- end,
+          fields = {
+            cmp.ItemField.Kind,
+            cmp.ItemField.Abbr,
+            cmp.ItemField.Menu,
+          },
           format = lspkind.cmp_format({
-            mode = 'symbol',   -- show only symbol annotations
-            maxwidth = 50,     -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-            symbol_map = {
-              Text = "󰉿",
-              Method = "󰆧",
-              Function = "󰊕",
-              Constructor = "",
-              Field = "󰜢",
-              Variable = "󰀫",
-              Class = "󰠱",
-              Interface = "",
-              Module = "",
-              Property = "󰜢",
-              Unit = "󰑭",
-              Value = "󰎠",
-              Enum = "",
-              Keyword = "󰌋",
-              Snippet = "",
-              Color = "󰏘",
-              File = "󰈙",
-              Reference = "󰈇",
-              Folder = "󰉋",
-              EnumMember = "",
-              Constant = "󰏿",
-              Struct = "󰙅",
-              Event = "",
-              Operator = "󰆕",
-              TypeParameter = "",
-            },
-          })
+            -- symbol_map = {
+            --   Copilot = "",
+            -- },
+            with_text = false,
+            before = function(entry, vim_item)
+              -- Get the full snippet (and only keep first line)
+              local word = entry:get_insert_text()
+              if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
+                word = vim.lsp.util.parse_snippet(word)
+              end
+              word = str.oneline(word)
+
+              if
+                  entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet
+                  and string.sub(vim_item.abbr, -1, -1) == "~"
+              then
+                word = word .. "~"
+              end
+              vim_item.abbr = word
+              if entry.completion_item.detail ~= nil and entry.completion_item.detail ~= "" then
+                vim_item.menu = entry.completion_item.detail
+              end
+              return vim_item
+            end,
+          }),
         },
         sources = {
           { name = "nvim_lsp" },

@@ -9,7 +9,7 @@ local opts = {
   relativenumber = true,
   smartindent = true,
   autoindent = true,
-  scrolloff = 20,
+  scrolloff = 12,
   signcolumn = 'yes',
 }
 
