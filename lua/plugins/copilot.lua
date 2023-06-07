@@ -1,19 +1,20 @@
 return {
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			local copilot = require("copilot")
-			copilot.setup({
-				suggestion = {
-					auto_trigger = true,
-				},
-				keymap = {
-					accept = "<Tab>",
-					accept_line = true,
-				}
-			})
-		end,
-	},
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      local copilot = require("copilot")
+      copilot.setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  }
 }

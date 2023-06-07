@@ -6,6 +6,9 @@ map("i", "jk", "<esc>")
 -- Fast way to add new line without leaving normal mode
 map("n", "<leader><Enter>", "o<esc>", "Add new line")
 
+-- Go back to start of line (first non-whitespace character)
+map("n", "0", "^")
+
 -- Quick access to some common actions
 map("n", "<leader>ww", "<cmd>w<cr>", "Write")
 map("n", "<leader>wa", "<cmd>wa<cr>", "Write all")

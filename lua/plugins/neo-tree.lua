@@ -10,6 +10,9 @@ return {
     },
     config = function()
       require("neo-tree").setup({
+        auto_clean_after_session_restore = true,
+        close_if_last_window = true,
+        sources = { "filesystem", "buffers", "git_status" },
         follow_current_file = true,
         buffers = {
           follow_current_file = true, -- This will find and focus the file in the active buffer every
@@ -17,6 +20,7 @@ return {
           group_empty_dirs = true,
         },
         default_component_configs = {
+          indent = { padding = 0, indent_size = 1 },
           icon = {
             folder_empty = "󰜌",
             folder_empty_open = "󰜌",
@@ -26,6 +30,20 @@ return {
               renamed  = "󰁕",
               unstaged = "󰄱",
             },
+          },
+        },
+        window = {
+          width = 30,
+        },
+        filesystem = {
+          follow_current_file = true,
+          hijack_netrw_behavior = "open_current",
+          use_libuv_file_watcher = true,
+        },
+        event_handlers = {
+          {
+            event = "neo_tree_buffer_enter",
+            handler = function(_) vim.opt_local.signcolumn = "auto" end,
           },
         },
         document_symbols = {
@@ -47,13 +65,6 @@ return {
             TypeParameter = { icon = "󰊄", hl = "Type" },
             StaticMethod = { icon = '󰠄 ', hl = 'Function' },
           }
-        },
-        -- Add this section only if you've configured source selector.
-        source_selector = {
-          sources = {
-            { source = "filesystem", display_name = " 󰉓 Files " },
-            { source = "git_status", display_name = " 󰊢 Git " },
-          },
         },
       })
       local map = require("helpers.keys").map
