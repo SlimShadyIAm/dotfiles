@@ -4,8 +4,9 @@ return {
     config = function()
       local lspkind = require("lspkind")
       lspkind.init({
-        mode = 'symbol',
+        mode = 'symbol_text',
         symbol_map = {
+          Copilot = "",
           Text = "󰉿",
           Method = "󰆧",
           Function = "󰊕",

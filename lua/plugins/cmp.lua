@@ -75,10 +75,7 @@ return {
             cmp.ItemField.Menu,
           },
           format = lspkind.cmp_format({
-            -- symbol_map = {
-            --   Copilot = "",
-            -- },
-            with_text = false,
+            with_text = true,
             before = function(entry, vim_item)
               -- Get the full snippet (and only keep first line)
               local word = entry:get_insert_text()
@@ -102,11 +99,11 @@ return {
           }),
         },
         sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
-          { name = "copilot", group_index = 2 },
+          { name = "nvim_lsp", group_index = 2 },
+          { name = "luasnip",  group_index = 2 },
+          { name = "buffer",   group_index = 2 },
+          { name = "path",     group_index = 2 },
+          { name = "copilot",  group_index = 1 },
         },
       })
     end,
