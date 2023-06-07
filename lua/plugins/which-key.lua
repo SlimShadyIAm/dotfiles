@@ -7,14 +7,12 @@ return {
 			wk.register(
 				{
 					["<leader>"] = {
-						f = { name = "File" },
+						f = { name = "Find" },
 						d = { name = "Delete/Close" },
 						q = { name = "Quit" },
-						s = { name = "Search" },
 						l = { name = "LSP" },
-						u = { name = "UI" },
-						b = { name = "Debugging" },
-						g = { name = "Git" },
+						g = { name = "Goto" },
+						t = { name = "Terminal" },
 					}
 				}
 			)

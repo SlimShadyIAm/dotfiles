@@ -28,20 +28,6 @@ return {
             require("telescope.themes").get_dropdown {
               -- even more opts
             }
-
-            -- pseudo code / specification for writing custom displays, like the one
-            -- for "codeactions"
-            -- specific_opts = {
-            --   [kind] = {
-            --     make_indexed = function(items) -> indexed_items, width,
-            --     make_displayer = function(widths) -> displayer
-            --     make_display = function(displayer) -> function(e)
-            --     make_ordinal = function(e) -> string
-            --   },
-            --   -- for example to disable the custom builtin "codeactions" display
-            --      do the following
-            --   codeactions = false,
-            -- }
           }
         }
       })
@@ -64,9 +50,8 @@ return {
       map("n", "<leader>fh", require("telescope.builtin").help_tags, "Help")
       -- map("n", "<leader>fw", require("telescope.builtin").grep_string, "Current word")
       map("n", "<leader>fw", require("telescope.builtin").live_grep, "Grep")
-      -- map("n", "<leader>sd", require("telescope.builtin").diagnostics, "Diagnostics")
 
-      map("n", "<C-p>", require("telescope.builtin").keymaps, "Search keymaps")
+      map("n", "<leader>fk", require("telescope.builtin").keymaps, "Search keymaps")
     end,
   },
 }
