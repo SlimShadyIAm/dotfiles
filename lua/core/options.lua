@@ -23,3 +23,7 @@ vim.cmd.colorscheme(colorscheme)
 vim.api.nvim_create_autocmd("VimEnter", {
   command = "set nornu nonu | set number | set relativenumber",
 })
+
+vim.diagnostic.config({
+  virtual_text = false,
+})

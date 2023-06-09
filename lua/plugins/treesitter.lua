@@ -12,7 +12,7 @@ return {
     config = function()
       require("nvim-treesitter.configs").setup({
         -- add languages to be installed here that you want installed for treesitter
-        ensure_installed = { "typescript", "javascript", "java", "lua", "python", "vim" },
+        ensure_installed = { "typescript", "javascript", "java", "lua", "python", "vim", "comment" },
 
         highlight = { enable = true },
         indent = { enable = true, disable = { "python" } },
@@ -70,10 +70,10 @@ return {
         vim.lsp.diagnostic.on_publish_diagnostics,
         {
           underline = true,
-          virtual_text = {
-            spacing = 5,
-            severity_limit = 'Warning',
-          },
+          -- virtual_text = {
+          --   spacing = 5,
+          --   severity_limit = 'Warning',
+          -- },
           update_in_insert = true,
         }
       )
