@@ -9,6 +9,11 @@ return {
       "MunifTanjim/nui.nvim",
     },
     config = function()
+      vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
+      vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+      vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
+      vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+
       require("neo-tree").setup({
         auto_clean_after_session_restore = true,
         close_if_last_window = true,
@@ -20,19 +25,28 @@ return {
           group_empty_dirs = true,
         },
         default_component_configs = {
-          indent = { padding = 0, indent_size = 1 },
           icon = {
-            folder_empty = "󰜌",
-            folder_empty_open = "󰜌",
+            folder_closed = "",
+            folder_open = "",
+            folder_empty = "",
+            default = ""
           },
           git_status = {
             symbols = {
-              renamed  = "󰁕",
-              unstaged = "󰄱",
-            },
+              added = "",
+              modified = "",
+              deleted = "",
+              renamed = "➜",
+              untracked = "",
+              ignored = "",
+              unstaged = "",
+              staged = "✓",
+              conflict = ""
+            }
           },
         },
         window = {
+          position = "right",
           width = 30,
         },
         filesystem = {
