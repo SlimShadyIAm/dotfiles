@@ -12,7 +12,7 @@ return {
         }
       })
       local map = require("helpers.keys").map
-      map({ "n", "t" }, "<C-t>", "<cmd>ToggleTerm<cr>", "Open terminal")
+      map({ "n", "t" }, "<C-\\>", "<cmd>ToggleTerm<cr>", "Open terminal")
     end,
   },
 }

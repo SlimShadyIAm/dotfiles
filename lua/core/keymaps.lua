@@ -2,12 +2,13 @@ local map = require("helpers.keys").map
 
 -- Blazingly fast way out of insert mode
 map("i", "jk", "<esc>")
+map("i", "kj", "<esc>")
 
 -- Fast way to add new line without leaving normal mode
 map("n", "<leader><Enter>", "o<esc>", "Add new line")
 
 -- Go back to start of line (first non-whitespace character)
-map("n", "0", "^")
+map("n", "2", "^")
 
 -- Quick access to some common actions
 map("n", "<leader>ww", "<cmd>w<cr>", "Write")
@@ -60,11 +61,11 @@ map("v", ">", ">gv")
 
 -- Switch between light and dark modes
 map("n", "<leader>ut", function()
-	if vim.o.background == "dark" then
-		vim.o.background = "light"
-	else
-		vim.o.background = "dark"
-	end
+  if vim.o.background == "dark" then
+    vim.o.background = "light"
+  else
+    vim.o.background = "dark"
+  end
 end, "Toggle between light and dark themes")
 
 -- Clear after search

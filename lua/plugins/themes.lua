@@ -12,6 +12,7 @@ return {
             enabled = true,
             colored_indent_levels = true,
           },
+          harpoon = true,
           mason = true,
           noice = true,
           native_lsp = {
