@@ -14,7 +14,10 @@ return {
         -- add languages to be installed here that you want installed for treesitter
         ensure_installed = { "typescript", "javascript", "java", "lua", "python", "vim", "comment" },
 
-        highlight = { enable = true },
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false
+        },
         indent = { enable = true, disable = { "python" } },
         incremental_selection = {
           enable = true,
