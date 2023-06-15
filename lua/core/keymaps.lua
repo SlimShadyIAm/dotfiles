@@ -28,10 +28,10 @@ map("n", "<M-h>", "^", "Go to beginning of line")
 map("n", "<M-l>", "$", "Go to end of line")
 
 -- Better window navigation
-map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
-map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
-map("n", "<C-k>", "<C-w><C-k>", "Navigate windows up")
-map("n", "<C-l>", "<C-w><C-l>", "Navigate windows to the right")
+-- map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
+-- map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
+-- map("n", "<C-k>", "<C-w><C-k>", "Navigate windows up")
+-- map("n", "<C-l>", "<C-w><C-l>", "Navigate windows to the right")
 
 -- Move with shift-arrows
 map("n", "<S-Left>", "<C-w><S-h>", "Move window to the left")

@@ -53,12 +53,58 @@ return {
           follow_current_file = true,
           hijack_netrw_behavior = "open_current",
           use_libuv_file_watcher = true,
+          components = {
+            harpoon_index = function(config, node, state)
+              local Marked = require("harpoon.mark")
+              local path = node:get_id()
+              local succuss, index = pcall(Marked.get_index_of, path)
+              if succuss and index and index > 0 then
+                return {
+                  text = string.format("󰁃 %d", index),
+                  highlight = config.highlight or "NeoTreeDirectoryIcon",
+                }
+              else
+                return {}
+              end
+            end
+          },
+          renderers = {
+            file = {
+              { "icon" },
+              { "name",         use_git_status_colors = true },
+              { "harpoon_index" },
+              { "diagnostics" },
+              { "git_status",   highlight = "NeoTreeDimText" },
+            }
+          }
         },
         event_handlers = {
           {
             event = "neo_tree_buffer_enter",
             handler = function(_) vim.opt_local.signcolumn = "auto" end,
           },
+          {
+            event = "file_opened",
+            handler = function(_state)
+              require("neo-tree").close_all()
+            end
+          },
+          {
+            event = "neo_tree_window_after_open",
+            handler = function(args)
+              if args.position == "left" or args.position == "right" then
+                vim.cmd("wincmd =")
+              end
+            end
+          },
+          {
+            event = "neo_tree_window_after_close",
+            handler = function(args)
+              if args.position == "left" or args.position == "right" then
+                vim.cmd("wincmd =")
+              end
+            end
+          }
         },
         document_symbols = {
           kinds = {
