@@ -49,8 +49,8 @@ if [[ $dir == "- dotfiles" ]]; then
 	dir="$DOTS"
 else
 	# Takes the directory and creates a session name from the last 2 parts
-	session_dir_prefix=$(basename "$(dirname "$dir")")
-	session_name="$session_dir_prefix-$(basename "$dir")"
+	session_dir_prefix=$(basename "$(dirname "$dir")" | sed 's/\./_/g')
+	session_name="$session_dir_prefix-$(basename "$dir" | sed 's/\./_/g')"
 fi
 
 tmux_running="$(pgrep tmux)"
