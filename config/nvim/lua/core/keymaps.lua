@@ -21,17 +21,13 @@ map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
 map("n", "<leader>so", "<cmd>so<cr>", "Source file")
 
 -- Diagnostic keymaps
-map('n', 'gx', vim.diagnostic.open_float, "Show diagnostics under cursor")
+map('n', '<leader>ld', vim.diagnostic.open_float, "Show diagnostics under cursor")
+map('n', '<C-]>', function () vim.diagnostic.goto_next() end, "Go to next diagnostic")
+map('n', '<C-[>', function () vim.diagnostic.goto_prev() end, "Go to previous diagnostic")
 
 -- Easier access to beginning and end of lines
 map("n", "<M-h>", "^", "Go to beginning of line")
 map("n", "<M-l>", "$", "Go to end of line")
-
--- Better window navigation
--- map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
--- map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
--- map("n", "<C-k>", "<C-w><C-k>", "Navigate windows up")
--- map("n", "<C-l>", "<C-w><C-l>", "Navigate windows to the right")
 
 -- Move with shift-arrows
 map("n", "<S-Left>", "<C-w><S-h>", "Move window to the left")

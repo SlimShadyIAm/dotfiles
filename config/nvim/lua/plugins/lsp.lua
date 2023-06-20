@@ -1,4 +1,4 @@
--- LSP Configuration & Plugins
+ -- LSP Configuration & Plugins
 return {
   {
     "neovim/nvim-lspconfig",
@@ -63,7 +63,7 @@ return {
 
         lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
         lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
-        lsp_map("<leader>ld", vim.lsp.buf.hover, bufnr, "Type definition")
+        lsp_map("<leader>lh", vim.lsp.buf.hover, bufnr, "Type definition")
         lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
 
         lsp_map("<leader>gd", vim.lsp.buf.definition, bufnr, "Goto Definition")
@@ -143,13 +143,7 @@ return {
       })
 
       require("lspconfig")["eslint"].setup({
-        on_attach = function(_, buffer)
-          -- vim.api.nvim_create_autocmd("BufWritepre", {
-          -- 	buffer = buffer,
-          -- 	command = "EslintFixAll",
-          -- })
-          vim.keymap.set("n", "<leader>F", "<cmd>EslintFixAll<cr>", { buffer = buffer, desc = "ESLIntFixAll" })
-        end,
+        on_attach = on_attach,
         capabilities = capabilities
       })
     end,

@@ -28,7 +28,7 @@ ln -s $DOTS/zprestorc $HOME/.zprestorc
 osascript -e 'display notification "Setting up .config folder"'
 
 mkdir -p $HOME/.config/alacritty
-ln -s $DOTS $HOME/.config
+ln -s $DOTS/config/* $HOME/.config
 
 # miscellaneous settings
 defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder;
