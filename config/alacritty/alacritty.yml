@@ -9,16 +9,16 @@ window:
   option_as_alt: OnlyLeft
 font:
   normal:
-    family: JetBrainsMono Nerd Font 
+    family: JetBrainsMono NF 
     style: Regular
   bold:
-    family: JetBrainsMono Nerd Font 
+    family: JetBrainsMono NF
     style: SemiBold
   italic:
-    family: JetBrainsMono Nerd Font 
+    family: JetBrainsMono NF
     style: Italic
   bold_italic:
-    family: JetBrainsMono Nerd Font 
+    family: JetBrainsMono NF
     style: SemiBold Italic
   size: 13.0
   offset:

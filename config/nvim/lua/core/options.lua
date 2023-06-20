@@ -24,6 +24,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
   command = "set nornu nonu | set number | set relativenumber",
 })
 
+-- use system clipboard as the default register
+vim.api.nvim_create_autocmd("VimEnter", {
+  command = "set clipboard=unnamedplus",
+})
+
 -- vim.diagnostic.config({
 --   virtual_text = false,
 -- })
+

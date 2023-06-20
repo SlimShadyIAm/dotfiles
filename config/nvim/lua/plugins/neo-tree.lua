@@ -129,8 +129,8 @@ return {
       })
       local map = require("helpers.keys").map
 
-      map({ "n", "v" }, "<leader>he", "<cmd>NeoTreeRevealToggle<cr>", "Toggle file explorer")
-      map({ "n", "v" }, "<leader>e", "<C-w>l", "Focus file explorer")
+      map({ "n", "v" }, "<leader>e", "<cmd>NeoTreeRevealToggle<cr>", "Toggle file explorer")
+      -- map({ "n", "v" }, "<leader>e", "<C-w>l", "Focus file explorer")
       map({ "n", "v" }, "<leader>c", "<C-w>t", "Focus code")
       map({ "n", "v" }, "<leader>re", "<cmd>Neotree reveal<cr>", "Reveal file in explorer")
       vim.api.nvim_create_autocmd("VimEnter", {

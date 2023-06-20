@@ -45,5 +45,12 @@ return {
       map({ "n", "i", "t" }, "<M-k>", function() require("tmux").resize_top() end)
       map({ "n", "i", "t" }, "<M-l>", function() require("tmux").resize_right() end)
     end
-  }
+  },
+	{
+		"petertriho/nvim-scrollbar",
+		config = function()
+			local scrollbar = require("scrollbar")
+			scrollbar.setup()
+		end,
+	},
 }

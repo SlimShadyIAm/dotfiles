@@ -54,4 +54,7 @@ return {
       map("n", "<leader>fk", require("telescope.builtin").keymaps, "Search keymaps")
     end,
   },
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+	},
 }
