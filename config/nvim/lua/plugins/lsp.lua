@@ -1,4 +1,4 @@
- -- LSP Configuration & Plugins
+-- LSP Configuration & Plugins
 return {
   {
     "neovim/nvim-lspconfig",
@@ -70,11 +70,6 @@ return {
         lsp_map("<leader>gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
         lsp_map("<leader>gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
         lsp_map("<leader>gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
-
-        -- Create a command `:Format` local to the LSP buffer
-        vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-          vim.lsp.buf.format()
-        end, { desc = "Format current buffer with LSP" })
 
         lsp_map("<leader>F", "<cmd>Format<cr>", bufnr, "Format")
 
