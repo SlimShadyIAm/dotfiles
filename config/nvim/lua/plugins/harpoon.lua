@@ -1,6 +1,7 @@
 return {
   {
     "ThePrimeagen/harpoon",
+    event = "VimEnter",
     config = function()
       require("harpoon").setup({
         global_settings = {

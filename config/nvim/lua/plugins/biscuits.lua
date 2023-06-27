@@ -1,6 +1,7 @@
 return {
 	{
 		"code-biscuits/nvim-biscuits",
+		event = "BufRead",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = function()
 			local biscuits = require("nvim-biscuits")

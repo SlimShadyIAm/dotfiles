@@ -19,6 +19,7 @@ return {
   },
   {
     "tpope/vim-fugitive",
+    event = "BufRead",
     config = function()
       local map = require("helpers.keys").map
       map("n", "<leader>ga", "<cmd>Git add %<cr>", "Stage the current file")

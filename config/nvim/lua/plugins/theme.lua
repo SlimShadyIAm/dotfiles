@@ -3,6 +3,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    event = "VimEnter",
     config = function()
       require('catppuccin').setup({
         flavor = 'mocha',

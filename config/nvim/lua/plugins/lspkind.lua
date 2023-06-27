@@ -1,6 +1,7 @@
 return {
   {
     "onsails/lspkind.nvim",
+    event = "BufRead",
     config = function()
       local lspkind = require("lspkind")
       lspkind.init({

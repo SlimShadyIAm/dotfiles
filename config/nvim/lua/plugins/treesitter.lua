@@ -2,6 +2,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    event = "BufRead",
     build = function()
       pcall(require("nvim-treesitter.install").update({ with_sync = true }))
     end,
@@ -11,7 +12,6 @@ return {
       "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/nvim-treesitter-context"
     },
-    event = "BufRead",
     config = function()
       require("nvim-treesitter.configs").setup({
         -- add languages to be installed here that you want installed for treesitter

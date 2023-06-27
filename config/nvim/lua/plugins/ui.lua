@@ -1,6 +1,7 @@
 return {
   {
     "lukas-reineke/indent-blankline.nvim",
+    event = "BufRead",
     config = function()
       local ident = require("indent_blankline")
       ident.setup()
@@ -8,10 +9,12 @@ return {
   },
   {
     "folke/todo-comments.nvim",
+    event = "BufRead",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   {
     "aserowy/tmux.nvim",
+    event = "VimEnter",
     config = function()
       require("tmux").setup({
         copy_sync = {
@@ -41,6 +44,7 @@ return {
   },
   {
     "petertriho/nvim-scrollbar",
+    event = "VimEnter",
     config = function()
       local scrollbar = require("scrollbar")
       scrollbar.setup()
@@ -48,6 +52,7 @@ return {
   },
   {
     'jinh0/eyeliner.nvim',
+    event = "BufRead",
     config = function()
       require 'eyeliner'.setup {
         highlight_on_key = true, -- show highlights only after keypress
