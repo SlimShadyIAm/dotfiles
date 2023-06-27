@@ -8,12 +8,15 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "windwp/nvim-ts-autotag",
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "nvim-treesitter/nvim-treesitter-context"
     },
+    event = "BufRead",
     config = function()
       require("nvim-treesitter.configs").setup({
         -- add languages to be installed here that you want installed for treesitter
         ensure_installed = { "typescript", "javascript", "java", "lua", "python", "vim", "comment" },
-
+        auto_install = true,
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false
@@ -61,6 +64,10 @@ return {
               ["[m"] = "@function.outer",
               ["[]"] = "@class.outer",
             },
+          },
+          context_commentstring = {
+            enable = true,
+            enable_autocmd = false,
           },
         },
       })

@@ -6,13 +6,6 @@ return {
       ident.setup()
     end,
   },
-  -- {
-  --   "ErichDonGubler/lsp_lines.nvim",
-  --   config = function()
-  --     local lsplines = require("lsp_lines")
-  --     lsplines.setup()
-  --   end,
-  -- },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -46,11 +39,20 @@ return {
       map({ "n", "i", "t" }, "<M-l>", function() require("tmux").resize_right() end)
     end
   },
-	{
-		"petertriho/nvim-scrollbar",
-		config = function()
-			local scrollbar = require("scrollbar")
-			scrollbar.setup()
-		end,
-	},
+  {
+    "petertriho/nvim-scrollbar",
+    config = function()
+      local scrollbar = require("scrollbar")
+      scrollbar.setup()
+    end,
+  },
+  {
+    'jinh0/eyeliner.nvim',
+    config = function()
+      require 'eyeliner'.setup {
+        highlight_on_key = true, -- show highlights only after keypress
+        dim = false            -- dim all other characters if set to true (recommended!)
+      }
+    end
+  }
 }

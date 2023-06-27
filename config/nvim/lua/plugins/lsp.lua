@@ -9,6 +9,7 @@ return {
       "folke/neodev.nvim",
       "RRethy/vim-illuminate",
       "hrsh7th/cmp-nvim-lsp",
+      "b0o/schemastore.nvim"
     },
     config = function()
       -- Set up Mason before anything else
@@ -17,6 +18,8 @@ return {
         ensure_installed = {
           "lua_ls",
           "pylsp",
+          "tsserver",
+          "eslint",
         },
         automatic_installation = true,
       })
@@ -141,6 +144,15 @@ return {
         on_attach = on_attach,
         capabilities = capabilities
       })
+
+      require('lspconfig')["jsonls"].setup {
+        settings = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      }
     end,
   },
 }

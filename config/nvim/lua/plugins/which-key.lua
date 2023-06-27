@@ -13,7 +13,7 @@ return {
 						l = { name = "LSP" },
 						g = { name = "Goto" },
 						t = { name = "Terminal" },
-					}
+					},
 				}
 			)
 		end
