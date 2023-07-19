@@ -30,3 +30,4 @@ alias nano=nvim
 alias vim=nvim
 export d="$HOME/Git"
 export DOTS="$HOME/.config/dotfiles"
+alias md="ls *.md | entr -c glow README.md"
