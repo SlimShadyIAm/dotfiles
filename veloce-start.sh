@@ -12,7 +12,13 @@ fi
 osascript -e 'display notification "Installing homebrew..."'
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# TODO: set up brew packages
+brew tap homebrew/cask
+brew tap homebrew/cask-fonts
+brew tap homebrew/cask-versions
+
+brew install bat tmux node nvm neovim ripgrep fzf fd lazygit pfetch
+brew install --cask alacritty alt-tab discord-canary dozer font-jetbrains-mono-nerd-font kitty nordvpn qbittorrent rar rectangle vlc 1password arc calibre cloudflare-warp craft dozer figma gitkraken microsoft-edge muzzle notion raycast shottr slack spotify the-unarchiver visual-studio-code whatsapp
+
 
 # zsh setup
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
@@ -27,7 +33,6 @@ ln -s $DOTS/zprestorc $HOME/.zprestorc
 # Set up .config folder
 osascript -e 'display notification "Setting up .config folder"'
 
-mkdir -p $HOME/.config/alacritty
 ln -s $DOTS/config/* $HOME/.config
 
 # miscellaneous settings
