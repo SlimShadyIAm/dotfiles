@@ -19,7 +19,6 @@ return {
         ensure_installed = {
           "lua_ls",
           "pylsp",
-          "tsserver",
           "eslint",
         },
         automatic_installation = true,
@@ -112,11 +111,6 @@ return {
         on_attach = on_attach,
         capabilities = capabilities,
       })
-      require("lspconfig")["tsserver"].setup({
-        on_attach = on_attach,
-        capabilities = capabilities
-      })
-
       require("lspconfig")["eslint"].setup({
         on_attach = on_attach,
         capabilities = capabilities
@@ -131,4 +125,18 @@ return {
       }
     end,
   },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+    config = function()
+      require("typescript-tools").setup({
+        settings = {
+          tsserver_plugins = {
+            "@styled/typescript-styled-plugin",
+          }
+        }
+      })
+    end
+  }
 }
