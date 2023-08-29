@@ -29,6 +29,8 @@ done
 source zshrc
 ln -s $DOTS/zshrc $HOME/.zshrc
 ln -s $DOTS/zprestorc $HOME/.zprestorc
+ln -s $DOTS/mackup.cfg ~/.mackup.cfg
+mackup restore
 
 # Set up .config folder
 osascript -e 'display notification "Setting up .config folder"'
