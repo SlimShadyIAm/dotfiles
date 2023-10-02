@@ -9,23 +9,22 @@ window:
   option_as_alt: OnlyLeft
 font:
   normal:
-    family: JetBrainsMono NF 
+    family: FiraMono Nerd Font Propo
     style: Regular
   bold:
-    family: JetBrainsMono NF
-    style: SemiBold
+    family: FiraMono Nerd Font Propo
+    style: bold
   italic:
-    family: JetBrainsMono NF
+    family: FiraMono Nerd Font Propo 
     style: Italic
   bold_italic:
-    family: JetBrainsMono NF
-    style: SemiBold Italic
+    family: FiraMono Nerd Font Propo 
+    style: Bold Italic
   size: 13.0
   offset:
-    y: 6 
+    y: 8 
     x: 0
 import:
-  # - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
   - ~/.config/alacritty/rose-pine.yml
 bell:
   duration: 10

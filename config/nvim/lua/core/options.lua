@@ -29,7 +29,3 @@ vim.api.nvim_create_autocmd("VimEnter", {
   command = "set clipboard=unnamedplus",
 })
 
--- vim.diagnostic.config({
---   virtual_text = false,
--- })
-
