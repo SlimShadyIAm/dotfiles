@@ -25,7 +25,8 @@ font:
     y: 6 
     x: 0
 import:
-  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+  # - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+  - ~/.config/alacritty/rose-pine.yml
 bell:
   duration: 10
   animation: EaseOutExpo

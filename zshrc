@@ -31,3 +31,4 @@ alias vim=nvim
 export d="$HOME/Git"
 export DOTS="$HOME/.config/dotfiles"
 alias md="ls *.md | entr -c glow README.md"
+export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
