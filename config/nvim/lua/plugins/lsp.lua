@@ -20,6 +20,7 @@ return {
           "lua_ls",
           "pylsp",
           "eslint",
+          "tailwindcss",
         },
         automatic_installation = true,
       })
@@ -116,6 +117,10 @@ return {
         capabilities = capabilities
       })
 
+      require("lspconfig")["tailwindcss"].setup({
+        on_attach = on_attach,
+        capabilities = capabilities
+      })
       require('lspconfig')["jsonls"].setup {
         settings = {
           json = {
