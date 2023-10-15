@@ -11,13 +11,34 @@ end
 config.enable_tab_bar = false
 config.check_for_updates = false
 config.window_decorations = "RESIZE"
+config.window_close_confirmation = 'NeverPrompt'
 
+-- cursor stuff
+config.default_cursor_style = 'BlinkingBlock'
+config.cursor_blink_rate = 500
+config.cursor_blink_ease_in = 'Linear'
+config.cursor_blink_ease_out = 'Linear'
+
+if wezterm.gui then
+	local gpus = wezterm.gui.enumerate_gpus()
+	config.webgpu_preferred_adapter = gpus[1]
+	config.front_end = 'WebGpu'
+end
+
+-- font
 config.font = wezterm.font("Fira Code", { weight = "Regular" })
 config.font_size = 13.0
 config.line_height = 1.1
-config.disable_default_key_bindings = true
-config.keys = {}
 config.harfbuzz_features = {"zero" , "ss01", "cv05"}
+
+-- disable alt+enter
+config.keys = {
+	{
+		key = 'Enter',
+		mods = 'META',
+		action = wezterm.action.DisableDefaultAssignment
+	}
+}
 
 -- setup color scheme
 local colors = require("lua/rose-pine").colors()
