@@ -23,7 +23,6 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"pylsp",
-					"eslint",
 					"tailwindcss",
 				},
 				automatic_installation = true,
