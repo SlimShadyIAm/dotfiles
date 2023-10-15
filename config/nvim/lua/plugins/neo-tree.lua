@@ -3,7 +3,6 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     event = "VeryLazy",
-    branch = "v2.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
@@ -130,7 +129,7 @@ return {
       })
       local map = require("helpers.keys").map
 
-      map({ "n", "v" }, "<leader>e", "<cmd>NeoTreeRevealToggle<cr>", "Toggle file explorer")
+      map({ "n", "v" }, "<leader>e", "<cmd>Neotree toggle<cr>", "Toggle file explorer")
     end,
   },
 }
