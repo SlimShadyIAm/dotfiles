@@ -73,10 +73,9 @@ return {
 				lsp_map("<leader>lh", vim.lsp.buf.hover, bufnr, "Type definition")
 				lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
 
-				lsp_map("<leader>gd", vim.lsp.buf.definition, bufnr, "Goto Definition")
+				lsp_map("<leader>gd", "<cmd>Telescope lsp_definitions<cr>" ,bufnr, "Goto Definition")
 				lsp_map("<leader>gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
 				lsp_map("<leader>gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
-				lsp_map("<leader>gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
 
 				lsp_map("<leader>F", "<cmd>Format<cr>", bufnr, "Format")
 

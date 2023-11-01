@@ -26,7 +26,7 @@ if wezterm.gui then
 end
 
 -- font
-config.font = wezterm.font("Fira Code", { weight = "Regular" })
+config.font = wezterm.font("JetBrains Mono", { weight = "Regular" })
 config.font_size = 13.0
 config.line_height = 1.1
 config.harfbuzz_features = {"zero" , "ss01", "cv05"}
