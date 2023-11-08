@@ -31,3 +31,9 @@ map("n", "<leader>da", buffers.delete_all, "All buffers")
 
 -- Clear after search
 map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
+
+-- for some reason escape in normal mode makes you jump to the next diagnostic. stop doing this
+map('n', '<Esc>', '<Nop>', { noremap = true, silent = true })
+
+-- disable paste on enter
+map('n', '<Enter>', '<Nop>', { noremap = true, silent = true })
