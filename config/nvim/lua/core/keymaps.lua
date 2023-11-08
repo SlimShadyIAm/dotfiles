@@ -7,10 +7,11 @@ map("i", "jk", "<esc>")
 map("n", "2", "^")
 
 -- Quick access to some common actions
-map("n", "<leader>ww", "<cmd>w<cr>", "Write")
-map("n", "<leader>wa", "<cmd>wa<cr>", "Write all")
-map("n", "<leader>qq", "<cmd>q<cr>", "Quit")
 map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all")
+
+-- Closing buffers
+local buffers = require("helpers.buffers")
+map("n", "<leader>qq", buffers.delete_this, "Current buffer")
 
 -- Diagnostic keymaps
 map('n', '<leader>ld', vim.diagnostic.open_float, "Show diagnostics under cursor")
@@ -22,12 +23,6 @@ map("n", "<S-Left>", "<C-w><S-h>", "Move window to the left")
 map("n", "<S-Down>", "<C-w><S-j>", "Move window down")
 map("n", "<S-Up>", "<C-w><S-k>", "Move window up")
 map("n", "<S-Right>", "<C-w><S-l>", "Move window to the right")
-
--- Deleting buffers
-local buffers = require("helpers.buffers")
-map("n", "<leader>db", buffers.delete_this, "Current buffer")
-map("n", "<leader>do", buffers.delete_others, "Other buffers")
-map("n", "<leader>da", buffers.delete_all, "All buffers")
 
 -- Clear after search
 map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
