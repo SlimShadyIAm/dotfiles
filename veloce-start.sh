@@ -17,15 +17,15 @@ brew tap homebrew/cask-fonts
 brew tap homebrew/cask-versions
 
 brew install bat tmux node nvm neovim ripgrep fzf fd lazygit pfetch mackup gnu-sed prettierd
-brew install --cask alacritty alt-tab discord-canary dozer font-jetbrains-mono-nerd-font nordvpn qbittorrent rar rectangle vlc 1password arc calibre cloudflare-warp craft dozer figma gitkraken microsoft-edge muzzle notion raycast shottr slack spotify the-unarchiver visual-studio-code whatsapp
+brew install --cask wezterm alt-tab discord-canary dozer font-jetbrains-mono-nerd-font nordvpn qbittorrent rar rectangle vlc 1password arc calibre cloudflare-warp craft dozer figma gitkraken microsoft-edge muzzle notion raycast shottr slack spotify the-unarchiver visual-studio-code whatsapp
 
 
 # zsh setup
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
+touch ~/.zshrc-secrets
 source zshrc
 ln -s $DOTS/zshrc $HOME/.zshrc
 ln -s $DOTS/zprestorc $HOME/.zprestorc
