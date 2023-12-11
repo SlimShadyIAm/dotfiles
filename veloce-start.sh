@@ -15,6 +15,7 @@ osascript -e 'display notification "Installing homebrew..."'
 brew tap homebrew/cask
 brew tap homebrew/cask-fonts
 brew tap homebrew/cask-versions
+brew tap oven-sh/bun
 
 brew install bat tmux node nvm neovim ripgrep fzf fd lazygit pfetch mackup gnu-sed prettierd exa
 brew install --cask alacritty alt-tab discord-canary dozer font-jetbrains-mono-nerd-font nordvpn qbittorrent rar rectangle vlc 1password arc calibre cloudflare-warp craft dozer figma gitkraken microsoft-edge muzzle notion raycast shottr slack spotify the-unarchiver visual-studio-code whatsapp
