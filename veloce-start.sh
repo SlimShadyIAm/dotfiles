@@ -41,4 +41,5 @@ ln -s $DOTS/config/* $HOME/.config
 # miscellaneous settings
 defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder;
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g NSWindowShouldDragOnGesture YES
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001

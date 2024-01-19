@@ -29,7 +29,6 @@ return {
 			})
 
 			local map = require("helpers.keys").map
-			-- move between buffers/tmux panes
 			map({ "n", "i", "t" }, "<C-h>", function()
 				require("tmux").move_left()
 			end)
@@ -41,19 +40,6 @@ return {
 			end)
 			map({ "n", "i", "t" }, "<C-l>", function()
 				require("tmux").move_right()
-			end)
-
-			map({ "n", "i", "t" }, "<M-h>", function()
-				require("tmux").resize_left()
-			end)
-			map({ "n", "i", "t" }, "<M-j>", function()
-				require("tmux").resize_bottom()
-			end)
-			map({ "n", "i", "t" }, "<M-k>", function()
-				require("tmux").resize_top()
-			end)
-			map({ "n", "i", "t" }, "<M-l>", function()
-				require("tmux").resize_right()
 			end)
 		end,
 	},

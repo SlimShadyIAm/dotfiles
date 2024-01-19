@@ -37,6 +37,26 @@ config.keys = {
 		key = 'Enter',
 		mods = 'META',
 		action = wezterm.action.DisableDefaultAssignment
+	},
+	{
+		key = 'h',
+		mods = 'CTRL|SHIFT',
+		action = wezterm.action.DisableDefaultAssignment
+	},
+	{
+		key = 'l',
+		mods = 'CTRL|SHIFT',
+		action = wezterm.action.DisableDefaultAssignment
+	},
+	{
+		key = 'j',
+		mods = 'CTRL|SHIFT',
+		action = wezterm.action.DisableDefaultAssignment
+	},
+	{
+		key = 'k',
+		mods = 'CTRL|SHIFT',
+		action = wezterm.action.DisableDefaultAssignment
 	}
 }
 

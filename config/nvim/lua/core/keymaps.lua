@@ -18,12 +18,12 @@ map('n', '<leader>ld', vim.diagnostic.open_float, "Show diagnostics under cursor
 map('n', '<C-]>', function () vim.diagnostic.goto_next() end, "Go to next diagnostic")
 map('n', '<C-[>', function () vim.diagnostic.goto_prev() end, "Go to previous diagnostic")
 
--- Move with shift-arrows
-map("n", "<S-Left>", "<C-w><S-h>", "Move window to the left")
-map("n", "<S-Down>", "<C-w><S-j>", "Move window down")
-map("n", "<S-Up>", "<C-w><S-k>", "Move window up")
-map("n", "<S-Right>", "<C-w><S-l>", "Move window to the right")
-
+-- -- Move with shift-arrows
+-- map("n", "<S-Left>", "<C-w><S-h>", "Move window to the left")
+-- map("n", "<S-Down>", "<C-w><S-j>", "Move window down")
+-- map("n", "<S-Up>", "<C-w><S-k>", "Move window up")
+-- map("n", "<S-Right>", "<C-w><S-l>", "Move window to the right")
+--
 -- Clear after search
 map("n", "<leader>ur", "<cmd>nohl<cr>", "Clear highlights")
 
