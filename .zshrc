@@ -31,7 +31,7 @@ launch() {
 alias nano=nvim
 alias vim=nvim
 export d="$HOME/Git"
-export DOTS="$HOME/.config/dotfiles"
+export DOTS="$HOME/dotfiles"
 alias md="ls *.md | entr -c glow README.md"
 export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
 alias ll="exa -l -g --icons --git"
