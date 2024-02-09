@@ -15,10 +15,11 @@ osascript -e 'display notification "Installing homebrew..."'
 brew tap homebrew/cask-fonts
 brew tap homebrew/cask-versions
 brew tap oven-sh/bun
+brew tap FelixKratz/formulae
 
-brew install bat tmux node nvm neovim ripgrep fzf fd lazygit pfetch stow gnu-sed prettierd exa zoxide
+brew install bat tmux node nvm neovim ripgrep fzf fd lazygit pfetch stow gnu-sed prettierd exa zoxide borders
 brew install --no-quarantine --cask nikitabobko/tap/aerospace
-brew install --cask wezterm discord-canary dozer font-jetbrains-mono-nerd-font rar rectangle vlc 1password arc cloudflare-warp dozer figma gitkraken muzzle notion raycast shottr slack spotify the-unarchiver visual-studio-code whatsapp
+brew install --cask wezterm discord-canary dozer font-jetbrains-mono-nerd-font rar rectangle vlc 1password arc cloudflare-warp dozer figma gitkraken muzzle notion raycast shottr slack spotify the-unarchiver visual-studio-code whatsapp microsoft-outlook
 
 
 # zsh setup
