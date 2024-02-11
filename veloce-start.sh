@@ -21,6 +21,7 @@ brew install bat tmux node nvm neovim ripgrep fzf fd lazygit pfetch stow gnu-sed
 brew install --no-quarantine --cask nikitabobko/tap/aerospace
 brew install --cask wezterm discord-canary dozer font-jetbrains-mono-nerd-font rar rectangle vlc 1password arc cloudflare-warp dozer figma gitkraken muzzle notion raycast shottr slack spotify the-unarchiver visual-studio-code whatsapp microsoft-outlook
 
+brew services start felixkratz/formulae/borders
 
 # zsh setup
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
