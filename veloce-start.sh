@@ -28,6 +28,7 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$H
 touch ~/.zshrc-secrets
 
 stow .
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 mkdir ~/Git
 mkdir ~/Git/work
 mkdir ~/Git/personal
