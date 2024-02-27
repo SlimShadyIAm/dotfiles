@@ -16,10 +16,12 @@ return {
       require("nvim-treesitter.configs").setup({
         -- add languages to be installed here that you want installed for treesitter
         ensure_installed = { "typescript", "javascript", "java", "lua", "python", "vim", "comment" },
+        ignore_install = { "dart" },
         auto_install = true,
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = false
+          additional_vim_regex_highlighting = false,
+          disable = { "dart" }
         },
         indent = { enable = true, disable = { "python" } },
         incremental_selection = {
@@ -70,12 +72,10 @@ return {
             enable_autocmd = false,
           },
         },
-      })
-      require('nvim-treesitter.configs').setup {
         autotag = {
           enable = true,
         }
-      }
+      })
       vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics,
         {

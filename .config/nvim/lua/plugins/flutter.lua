@@ -1,6 +1,9 @@
 return {
 	{
 		'akinsho/flutter-tools.nvim',
+		dependencies = {
+			"dart-lang/dart-vim-plugin",
+		},
 		lazy = false,
 		dependencies = {
 			'nvim-lua/plenary.nvim',
@@ -9,11 +12,11 @@ return {
 		config = function()
 			require("flutter-tools").setup {
 				debugger = {
-          enabled = false,
-          run_via_dap = false,
-          register_configurations = function(_)
+					enabled = false,
+					run_via_dap = false,
+					register_configurations = function(_)
 
-				end
+					end
 				}
 			} -- use defaults
 		end,
