@@ -1,3 +1,27 @@
+local on_attach = function(client, bufnr)
+	local lsp_map = require("helpers.keys").lsp_map
+
+	lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
+	lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
+	lsp_map("<leader>lh", vim.lsp.buf.hover, bufnr, "Type definition")
+	lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr,
+		"Document symbols")
+
+	lsp_map("<leader>gd", "<cmd>Telescope lsp_definitions<cr>", bufnr, "Goto Definition")
+	lsp_map("<leader>gr", require("telescope.builtin").lsp_references, bufnr,
+		"Goto References")
+	lsp_map("<leader>gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
+
+	lsp_map("<leader>F", "<cmd>Format<cr>", bufnr, "Format")
+
+	-- Attach and configure vim-illuminate
+	require("illuminate").on_attach(client)
+end
+
+-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
 -- LSP Configuration & Plugins
 return {
 	{
@@ -10,6 +34,15 @@ return {
 				"j-hui/fidget.nvim",
 				tag = "legacy",
 				event = "LspAttach",
+			},
+			{
+				'akinsho/flutter-tools.nvim',
+				lazy = false,
+				dependencies = {
+					"dart-lang/dart-vim-plugin",
+					'nvim-lua/plenary.nvim',
+					'stevearc/dressing.nvim', -- optional for vim.ui.select
+				},
 			},
 			"folke/neodev.nvim",
 			"RRethy/vim-illuminate",
@@ -67,27 +100,6 @@ return {
 			vim.diagnostic.config(config)
 
 			-- This function gets run when an LSP connects to a particular buffer.
-			local on_attach = function(client, bufnr)
-				local lsp_map = require("helpers.keys").lsp_map
-
-				lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
-				lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
-				lsp_map("<leader>lh", vim.lsp.buf.hover, bufnr, "Type definition")
-				lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
-
-				lsp_map("<leader>gd", "<cmd>Telescope lsp_definitions<cr>", bufnr, "Goto Definition")
-				lsp_map("<leader>gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
-				lsp_map("<leader>gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
-
-				lsp_map("<leader>F", "<cmd>Format<cr>", bufnr, "Format")
-
-				-- Attach and configure vim-illuminate
-				require("illuminate").on_attach(client)
-			end
-
-			-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 			-- Lua
 			require("lspconfig")["lua_ls"].setup({
@@ -140,33 +152,23 @@ return {
 				vim.fn.expand("$HOME/tools/flutter/"),
 			}
 
-			require("lspconfig")["dartls"].setup({
-				capabilities = capabilities,
-				cmd = {
-					"dart",
-					"language-server",
-					"--protocol=lsp",
-					-- "--port=8123",
-					-- "--instrumentation-log-file=/Users/robertbrunhage/Desktop/lsp-log.txt",
-				},
-				filetypes = { "dart" },
-				init_options = {
-					onlyAnalyzeProjectsWithOpenFiles = false,
-					suggestFromUnimportedLibraries = true,
-					closingLabels = true,
-					outline = false,
-					flutterOutline = false,
-				},
-				settings = {
-					dart = {
-						analysisExcludedFolders = dartExcludedFolders,
-						updateImportsOnRename = true,
-						completeFunctionCalls = true,
-						showTodos = true,
-					},
-				},
+			require('flutter-tools').setup {
+				lsp = {
+					on_attach = on_attach,
+					capabilities = capabilities,
+					color = {
+						enabled = true,
+						virtual_text = true,
+					}
+				}
+			}
+
+			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+				group = vim.api.nvim_create_augroup("code_action_sign", { clear = true }),
+				callback = function()
+					require('helpers.code_action_utils').code_action_listener()
+				end,
 			})
-			require("dart-tools")
 		end,
 	},
 	{
