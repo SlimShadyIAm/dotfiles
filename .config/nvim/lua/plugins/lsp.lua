@@ -12,6 +12,9 @@ local on_attach = function(client, bufnr)
 		"Goto References")
 	lsp_map("<leader>gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
 
+	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+		vim.lsp.buf.format()
+	end, { desc = "Format current buffer with LSP" })
 	lsp_map("<leader>F", "<cmd>Format<cr>", bufnr, "Format")
 
 	-- Attach and configure vim-illuminate
