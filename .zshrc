@@ -42,3 +42,12 @@ eval "$(zoxide init zsh)"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$PATH:$HOME/flutter/bin"
 export FLUTTER_ROOT="/Users/shady/flutter"
+
+function flutter-watch(){
+  # tmux new-session \;\
+  tmux send-keys 'flutter run --pid-file=/tmp/tf1.pid' Enter \;\
+  split-window -h \;\
+  send-keys 'npx -y nodemon -e dart -x "cat /tmp/tf1.pid | xargs kill -s USR1"' Enter \;\
+  resize-pane -y 5 -t 1 \;\
+  select-pane -t 0 \;
+}
