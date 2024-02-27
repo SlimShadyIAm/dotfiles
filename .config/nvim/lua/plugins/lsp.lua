@@ -159,6 +159,7 @@ return {
 					color = {
 						enabled = true,
 						virtual_text = true,
+						background = true,
 					}
 				}
 			}

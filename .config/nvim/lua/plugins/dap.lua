@@ -78,8 +78,12 @@ return {
 				},
 			}
 
+			-- change breakpoint symbol
+			vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
+
 			-- Keybindings
-			map("n", "<leader>db", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", "Toggle breakpoint")
+			map("n", "<leader>db", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>",
+				"Toggle breakpoint")
 			map("n", "<leader>dc", dap.continue, "Continue")
 			map("n", "<leader>dd", ":lua require('dapui').toggle()<CR>", "Toggle DAP UI")
 			map("n", "<leader>dj", ":lua require('dap').step_over()<CR>", "Step over")
