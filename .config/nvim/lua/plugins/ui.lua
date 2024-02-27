@@ -1,12 +1,5 @@
 return {
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {},
-
-		event = "BufRead",
-	},
-	{
 		"folke/todo-comments.nvim",
 		event = "BufRead",
 		dependencies = { "nvim-lua/plenary.nvim" },

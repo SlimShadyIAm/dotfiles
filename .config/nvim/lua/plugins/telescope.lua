@@ -49,10 +49,9 @@ return {
 			require("telescope.actions")
 			map("n", "<leader>ff", require("telescope.builtin").find_files, "Find files")
 			map("n", "<leader>fh", require("telescope.builtin").help_tags, "Help")
-			-- map("n", "<leader>fw", require("telescope.builtin").grep_string, "Current word")
+			map("n", "<leader>fs", require("telescope.builtin").grep_string, "Current word")
 			map("n", "<leader>fw", require("telescope.builtin").live_grep, "Grep")
-
-			map("n", "<leader>fk", require("telescope.builtin").keymaps, "Search keymaps")
+			map("n", "<leader>fc", require("telescope").load_extension("flutter").commands, "Flutter commands")
 		end,
 	},
 	{

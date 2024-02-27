@@ -30,6 +30,8 @@ launch() {
 
 alias nano=nvim
 alias vim=nvim
+alias cd=z
+alias ls=exa
 export d="$HOME/Git"
 export DOTS="$HOME/dotfiles"
 alias md="ls *.md | entr -c glow README.md"
@@ -38,3 +40,5 @@ alias ll="exa -l -g --icons --git"
 alias search="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs nvim"
 eval "$(zoxide init zsh)"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="$PATH:$HOME/flutter/bin"
+export FLUTTER_ROOT="/Users/shady/flutter"

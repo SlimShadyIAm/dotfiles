@@ -15,6 +15,8 @@ return {
 			"RRethy/vim-illuminate",
 			"hrsh7th/cmp-nvim-lsp",
 			"b0o/schemastore.nvim",
+			"RobertBrunhage/dart-tools.nvim",
+			"dart-lang/dart-vim-plugin",
 		},
 		config = function()
 			-- Set up Mason before anything else
@@ -73,7 +75,7 @@ return {
 				lsp_map("<leader>lh", vim.lsp.buf.hover, bufnr, "Type definition")
 				lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
 
-				lsp_map("<leader>gd", "<cmd>Telescope lsp_definitions<cr>" ,bufnr, "Goto Definition")
+				lsp_map("<leader>gd", "<cmd>Telescope lsp_definitions<cr>", bufnr, "Goto Definition")
 				lsp_map("<leader>gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
 				lsp_map("<leader>gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
 
@@ -130,6 +132,41 @@ return {
 					},
 				},
 			})
+
+			local dartExcludedFolders = {
+				vim.fn.expand("$HOME/AppData/Local/Pub/Cache"),
+				vim.fn.expand("$HOME/.pub-cache"),
+				vim.fn.expand("/opt/homebrew/"),
+				vim.fn.expand("$HOME/tools/flutter/"),
+			}
+
+			require("lspconfig")["dartls"].setup({
+				capabilities = capabilities,
+				cmd = {
+					"dart",
+					"language-server",
+					"--protocol=lsp",
+					-- "--port=8123",
+					-- "--instrumentation-log-file=/Users/robertbrunhage/Desktop/lsp-log.txt",
+				},
+				filetypes = { "dart" },
+				init_options = {
+					onlyAnalyzeProjectsWithOpenFiles = false,
+					suggestFromUnimportedLibraries = true,
+					closingLabels = true,
+					outline = false,
+					flutterOutline = false,
+				},
+				settings = {
+					dart = {
+						analysisExcludedFolders = dartExcludedFolders,
+						updateImportsOnRename = true,
+						completeFunctionCalls = true,
+						showTodos = true,
+					},
+				},
+			})
+			require("dart-tools")
 		end,
 	},
 	{
