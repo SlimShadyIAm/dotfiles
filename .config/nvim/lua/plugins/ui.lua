@@ -50,8 +50,17 @@ return {
 		config = function()
 			require("eyeliner").setup({
 				highlight_on_key = true, -- show highlights only after keypress
-				dim = false, -- dim all other characters if set to true (recommended!)
+				dim = false,         -- dim all other characters if set to true (recommended!)
 			})
 		end,
+	},
+	{
+		"chrisgrieser/nvim-early-retirement",
+		config = function ()
+			require("early-retirement").setup({
+				ignoreFileNamePattern = "__FLUTTER_DEV_LOG__"
+			})
+		end,
+		event = "VeryLazy",
 	},
 }

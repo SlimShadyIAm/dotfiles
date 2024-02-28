@@ -17,6 +17,7 @@ local on_attach = function(client, bufnr)
 	end, { desc = "Format current buffer with LSP" })
 	lsp_map("<leader>F", "<cmd>Format<cr>", bufnr, "Format")
 
+
 	-- Attach and configure vim-illuminate
 	require("illuminate").on_attach(client)
 end
@@ -164,7 +165,10 @@ return {
 						virtual_text = true,
 						background = true,
 					}
-				}
+				},
+				dev_log = {
+					open_cmd = 'belowright 14new',
+				},
 			}
 
 			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {

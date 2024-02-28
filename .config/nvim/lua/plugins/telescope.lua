@@ -52,6 +52,7 @@ return {
 			map("n", "<leader>fs", require("telescope.builtin").grep_string, "Current word")
 			map("n", "<leader>fw", require("telescope.builtin").live_grep, "Grep")
 			map("n", "<leader>fc", require("telescope").load_extension("flutter").commands, "Flutter commands")
+			map("n", "<leader>fb", require("telescope.builtin").buffers, "Open buffers")
 		end,
 	},
 	{
