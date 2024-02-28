@@ -34,7 +34,8 @@ alias cd=z
 alias ls=exa
 export d="$HOME/Git"
 export DOTS="$HOME/dotfiles"
-alias md="ls *.md | entr -c glow README.md"
+alias md='fd -e md | fzf --bind "enter:execute(entr -c glow {} <<< {})"'
+
 export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
 alias ll="exa -l -g --icons --git"
 alias search="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs nvim"
@@ -51,3 +52,4 @@ function flutter-watch(){
   resize-pane -y 5 -t 1 \;\
   select-pane -t 0 \;
 }
+

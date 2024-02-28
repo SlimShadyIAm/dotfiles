@@ -29,3 +29,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
   command = "set clipboard=unnamedplus",
 })
 
+-- enable mouse mode
+vim.api.nvim_create_autocmd("VimEnter", {
+  command = "set mouse=n",
+})
+
