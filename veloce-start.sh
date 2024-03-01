@@ -17,7 +17,7 @@ brew tap homebrew/cask-versions
 brew tap oven-sh/bun
 brew tap FelixKratz/formulae
 
-brew install bat tmux node nvm neovim ripgrep fzf fd lazygit pfetch stow gnu-sed prettierd exa zoxide borders entr
+brew install bat tmux node nvm neovim ripgrep fzf fd lazygit pfetch stow gnu-sed prettierd lsd zoxide borders entr
 brew install --no-quarantine --cask nikitabobko/tap/aerospace
 brew install --cask wezterm discord-canary dozer font-jetbrains-mono-nerd-font rar rectangle vlc 1password arc cloudflare-warp dozer figma gitkraken muzzle notion raycast shottr slack spotify the-unarchiver visual-studio-code whatsapp microsoft-outlook
 
