@@ -5,81 +5,64 @@ return {
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
 			"theHamsta/nvim-dap-virtual-text",
-			"Weissle/persistent-breakpoints.nvim"
+			"Weissle/persistent-breakpoints.nvim",
+			"leoluz/nvim-dap-go",
 		},
 		config = function()
-			-- Set up some keybindings
-			local map = require('helpers.keys').map
-
 			local dap = require('dap')
 			local dapui = require('dapui')
 			dapui.setup()
 
+			-- Set up some keybindings
+			local map = require('helpers.keys').map
 
-			dap.listeners.before.attach.dapui_config = function()
-				dapui.open()
+			require("nvim-dap-virtual-text").setup({
+				commented = true,
+			})
+
+			require('dap.dart').setup()
+			require('dap.go').setup()
+
+			dap.listeners.after.event_initialized["dapui_config"] = function()
+				dapui.open({})
 			end
-			dap.listeners.before.launch.dapui_config = function()
-				dapui.open()
+			dap.listeners.before.event_terminated["dapui_config"] = function()
+				dapui.close({})
 			end
-			dap.listeners.before.event_terminated.dapui_config = function()
-				dapui.close()
-			end
-			dap.listeners.before.event_exited.dapui_config = function()
-				dapui.close()
+			dap.listeners.before.event_exited["dapui_config"] = function()
+				dapui.close({})
 			end
 
 			require('persistent-breakpoints').setup {
 				load_breakpoints_event = { "BufReadPost" }
 			}
 
-			-- Dart / Flutter
-			dap.adapters.dart = {
-				type = 'executable',
-				command = 'dart',
-				args = { 'debug_adapter' }
-			}
-			dap.adapters.flutter = {
-				type = 'executable',
-				command = 'flutter',
-				args = { 'debug_adapter' }
-			}
-			dap.configurations.dart = {
-				{
-					type = "dart",
-					request = "launch",
-					name = "Launch dart",
-					dartSdkPath = "/Users/shady/flutter/bin/cache/dart-sdk/bin/dart", -- ensure this is correct
-					flutterSdkPath = "/Users/flutter/bin/flutter",               -- ensure this is correct
-					program = "${workspaceFolder}/lib/main.dart",                -- ensure this is correct
-					cwd = "${workspaceFolder}",
-				},
-				{
-					type = "flutter",
-					request = "launch",
-					name = "Launch flutter",
-					dartSdkPath = "/Users/flutter/bin/cache/dart-sdk/bin/dart", -- ensure this is correct
-					flutterSdkPath = "/Users/flutter/bin/flutter",         -- ensure this is correct
-					program = "${workspaceFolder}/lib/main.dart",          -- ensure this is correct
-					cwd = "${workspaceFolder}",
-				},
-				{
-					name = "attach",
-					request = "attach",
-					type = "dart",
-					cwd = "${workspaceFolder}",
-					vmServiceUri = function()
-						local value = vim.fn.input('VM Service URI: ')
-						if value ~= '' then
-							return value
-						end
-					end
-
-				},
-			}
 
 			-- change breakpoint symbol
-			vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
+			local dap_breakpoint = {
+				error = {
+					text = "🛑",
+					texthl = "LspDiagnosticsSignError",
+					linehl = "",
+					numhl = "",
+				},
+				rejected = {
+					text = "",
+					texthl = "LspDiagnosticsSignHint",
+					linehl = "",
+					numhl = "",
+				},
+				stopped = {
+					text = "⭐️",
+					texthl = "LspDiagnosticsSignInformation",
+					linehl = "DiagnosticUnderlineInfo",
+					numhl = "LspDiagnosticsSignInformation",
+				},
+			}
+
+			vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
+			vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
+			vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
 
 			-- Keybindings
 			map("n", "<leader>db", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>",

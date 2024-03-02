@@ -1,6 +1,6 @@
-local on_attach = function(client, bufnr)
-	local lsp_map = require("helpers.keys").lsp_map
+local lsp_map = require("helpers.keys").lsp_map
 
+local on_attach = function(client, bufnr)
 	lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
 	lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
 	lsp_map("<leader>lh", vim.lsp.buf.hover, bufnr, "Type definition")
@@ -149,6 +149,14 @@ return {
 				},
 			})
 
+			require("lspconfig")["gopls"].setup({
+				on_attach = function(client, bufnr)
+					on_attach(client, bufnr)
+					lsp_map("<leader>F", "<cmd>GoFmt<cr>", bufnr, "Format")
+				end,
+				capabilities = capabilities,
+			})
+
 			require('flutter-tools').setup {
 				lsp = {
 					on_attach = on_attach,
@@ -186,4 +194,22 @@ return {
 			})
 		end,
 	},
+	{
+		"ray-x/go.nvim",
+		dependencies = { -- optional packages
+			"ray-x/guihua.lua",
+			"neovim/nvim-lspconfig",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("go").setup({
+				dap_debug = true,
+			})
+			local map = require("helpers.keys").map
+			map("n", "<leader>F", function() require("go.format").goimport() end, "GoFormat")
+		end,
+		event = { "CmdlineEnter" },
+		ft = { "go", 'gomod' },
+		build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+	}
 }
