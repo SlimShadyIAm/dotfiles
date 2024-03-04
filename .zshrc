@@ -42,6 +42,7 @@ eval "$(zoxide init zsh)"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$PATH:$HOME/flutter/bin"
 export FLUTTER_ROOT="/Users/shady/flutter"
+eval $(thefuck --alias)
 
 function flutter-watch(){
   # tmux new-session \;\
