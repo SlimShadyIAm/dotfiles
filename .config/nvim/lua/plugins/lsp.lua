@@ -46,6 +46,8 @@ return {
 					"dart-lang/dart-vim-plugin",
 					'nvim-lua/plenary.nvim',
 					'stevearc/dressing.nvim', -- optional for vim.ui.select
+					'MunifTanari/nui.nvim', -- optional for flutter outline'
+					'MunifTanjim/exrc.nvim'
 				},
 			},
 			"folke/neodev.nvim",
@@ -172,12 +174,19 @@ return {
 				},
 			}
 
-			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-				group = vim.api.nvim_create_augroup("code_action_sign", { clear = true }),
-				callback = function()
-					require('helpers.code_action_utils').code_action_listener()
-				end,
+			vim.o.exrc = false
+			require('exrc').setup({
+				files = {
+					".vscode/nvim.launch.lua"
+				}
 			})
+
+			-- 	vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+			-- 		group = vim.api.nvim_create_augroup("code_action_sign", { clear = true }),
+			-- 		callback = function()
+			-- 			require('helpers.code_action_utils').code_action_listener()
+			-- 		end,
+			-- 	})
 		end,
 	},
 	{

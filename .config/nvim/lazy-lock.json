@@ -13,6 +13,7 @@
   "dart-tools.nvim": { "branch": "main", "commit": "34f4835d42213ab3fb85995296bf25bd0e8712fa" },
   "dart-vim-plugin": { "branch": "master", "commit": "928302ec931caf0dcf21835cca284ccd2b192f7b" },
   "dressing.nvim": { "branch": "master", "commit": "6f212262061a2120e42da0d1e87326e8a41c0478" },
+  "exrc.nvim": { "branch": "main", "commit": "0aae882db72885ade36641d677a22204c72e50f4" },
   "eyeliner.nvim": { "branch": "main", "commit": "c540d58bf52aa979d4cca639c60387ae0c0ccf88" },
   "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
   "flutter-tools.nvim": { "branch": "main", "commit": "28482c71537bb748ccede91facc93a2ea2803a8c" },
