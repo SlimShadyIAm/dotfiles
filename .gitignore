@@ -1,5 +1,7 @@
-.config/flutter
-.config/github-copilot
-.config/op
-.config/raycast
-.config/thefuck
+.config/*
+!.config/nvim
+!.config/tmux
+!.config/borders
+!.config/lazygit
+!.config/wezterm
+
