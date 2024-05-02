@@ -56,3 +56,4 @@ function flutter-watch(){
   select-pane -t 0 \;
 }
 
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
